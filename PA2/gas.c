@@ -7,29 +7,83 @@
 
 typedef struct Node {
 	int location;
-	int is_checked;
-	int child_num;
+	int checked;
+	int num_child;
 	struct Node* child;
-	struct Node* parent;
+	struct Node* prev;
 } Node;
+
+void insert(Node* p, int location) {
+	p->child = (Node*)realloc(p->child, sizeof(Node)*(p->num_child + 1));
+	p->child[p->num_child].location = location;
+	p->child[p->num_child].checked = false;
+	p->child[p->num_child].num_child = 0;
+	p->child[p->num_child].child = NULL;
+	p->child[p->num_child].prev =p;
+	p->num_child++;
+}
 
 int isReachable(int *gasStation, int N) {
 	int goal = N-1;
-	int cur_idx = 0;
-	Node start;
-	start.location = cur_idx;
-	start.is_checked = true;
-	start.parent = NULL;
-	start.child_num = gasStation[cur_idx];
-	start.child = (Node*)malloc(sizeof(Node) * gasStation[cur_idx]);
-	Node* cur = &start;
-	while(1) {
-		for(int i=0; i<cur->child_num; i++) {
-			cur->child[i].location = cur->location + gasStation[cur_idx];
-		}
-		
+	Node root;
+	root.location = 0;
+	root.checked = false;
+	root.prev = NULL;
+	root.num_child = 0;
+	Node* cur = &root;
 
+	while(cur != NULL && cur->location != goal) {
+		//printf("cur->location: %d\n", cur->location);
+		int jump = gasStation[cur->location];
+		int tmp = cur->checked;
+		cur->checked = true;
+		if(jump == 0) {
+			//printf("jump == 0, choose another child\n");
+			// backtrack
+			if(cur->prev == NULL) return false;
+			int choosed = false;
+			for(int i=cur->prev->num_child-1; i>=0; i--) {
+				if(cur->prev->child[i].checked == false) {
+					cur = &(cur->prev->child[i]);
+					choosed = true;
+					break;
+				}
+			}
+			if(choosed) continue;
+			else cur = cur->prev;
+		}
+		else {
+			// not checked yet
+			//printf("jump != 0\n");
+			if(tmp  == false) {
+				//printf("not checked, so insert child\n");
+				for(int i=1; i<=jump; i++) {
+					insert(cur, cur->location + i);
+				}
+				cur = &(cur->child[cur->num_child - 1]);
+			} 
+			// already checked
+			else {
+				// backtrack
+				//printf("already checked before, backtrack\n");
+				if(cur->prev == NULL) return false;
+				int choosed = false;
+				for(int i=cur->prev->num_child-1; i>=0; i--) {
+					if(cur->prev->child[i].checked == false) {
+						cur = &(cur->prev->child[i]);
+						choosed = true;
+						break;
+					}
+				}
+				if(choosed) continue;
+				else cur = cur->prev;
+			}
+		}
+		//cur->checked = true;
 	}
+	if(cur==NULL)
+		return false;
+	
 	return true;
 }
 
