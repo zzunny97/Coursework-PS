@@ -197,9 +197,9 @@ void find_common3() {
 int main()
 {
 
-FILE *fp =  fopen("sample1_answer.txt", "r");
-FILE *fp2 = fopen("sample1_n2.txt", "r");
-FILE *fp3 = fopen("sample1_n1.txt", "r");
+FILE *fp =  fopen("sample5_answer.txt", "r");
+FILE *fp2 = fopen("sample5_n2.txt", "r");
+FILE *fp3 = fopen("sample5_n1.txt", "r");
 //FILE *fp =  fopen("answer.txt", "r");
 //FILE *fp2 = fopen("input2.txt", "r");
 //FILE *fp3 = fopen("input1.txt", "r");
@@ -231,6 +231,7 @@ fclose(fp3);
 struct timeval start, end;
 double diff;
 
+
 printf("common3\n");
 gettimeofday(&start, NULL);
 find_common3();
@@ -239,15 +240,9 @@ diff = (end.tv_sec - start.tv_sec) + ((double)(end.tv_usec - start.tv_usec) / 10
 printf("elapsed: %f\n", diff);
 printf("Real_Common : %d\n",common ); //Real answer
 printf("Calculated_Common : %d\n",answer ); //Your guess
-answer = 0;
-printf("common2\n");
-gettimeofday(&start, NULL);
-find_common2();
-gettimeofday(&end, NULL);
-diff = (end.tv_sec - start.tv_sec) + ((double)(end.tv_usec - start.tv_usec) / 1000000);
-printf("elapsed: %f\n", diff);
-printf("Real_Common : %d\n",common ); //Real answer
-printf("Calculated_Common : %d\n",answer ); //Your guess
+
+/*
+
 answer = 0;
 printf("original\n");
 gettimeofday(&start, NULL);
@@ -257,7 +252,7 @@ diff = (end.tv_sec - start.tv_sec) + ((double)(end.tv_usec - start.tv_usec) / 10
 printf("elapsed: %f\n", diff);
 printf("Real_Common : %d\n",common ); //Real answer
 printf("Calculated_Common : %d\n",answer ); //Your guess
-
+*/
 
 return 0;
 
