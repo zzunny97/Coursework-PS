@@ -82,6 +82,10 @@ void intersect(int *d, int* q, int mind, int maxd, int minq, int maxq) {
 	//printf("minq: %d ", minq);
 	//printf("maxq: %d\n", maxq);
 	//printf("%d %d %d %d\n", d[mind], d[maxd], q[minq], q[maxq]);
+	
+	
+	//int midq, midqval, midd;
+	
 	if(mind > maxd || minq > maxq) return;
 	if(d[maxd] < q[minq] || q[maxq] < d[mind]) return;
 	int midq = (minq+maxq) / 2;
@@ -106,9 +110,30 @@ void intersect(int *d, int* q, int mind, int maxd, int minq, int maxq) {
 }
 
 void find_common2() {
-	//int* d = n2;
-	//int* q = n1;
-	intersect(n2, n1, 0, n2_num-1, 0, n1_num-1);
+	
+	if(n2_num / n1_num > 2) {
+		int *n1_cur = n1;
+		int *n1_end = n1 + n1_num;
+		int *n2_cur = n2;
+		int *n2_end = n2 + n2_num;
+
+		while(n1_cur!=n1_end && n2_cur!=n2_end) {
+			if(*n1_cur < *n2_cur) {
+				++n1_cur;
+			}
+			else if(*n1_cur > *n2_cur) {
+				++n2_cur;
+			}
+			else {
+				++answer;
+				++n1_cur;
+				++n2_cur;
+			}
+		}
+	}
+	else {
+		intersect(n2, n1, 0, n2_num-1, 0, n1_num-1);
+	}
 }
 
 void find_common3() {
@@ -118,27 +143,39 @@ void find_common3() {
 	int *last2 = n2 + n2_num;
 	
 	int ratio = n2_num / n1_num;
-	int cnt2 = 0;
 	int h = 1;
+	printf("ratio: %d\n", ratio);
 	if(ratio > 2) {
-		printf("ratio: %d\n", ratio);
-		//while((first1 < last1 || first2 < last2) && cnt) {
 		while(first1 < last1 && first2 < last2) {
 			if(*first2 < *first1) {
 				first2 += ratio;
 			} else if(*first2 > *first1) {
+				/*
 				while(*first2 > *first1) {
-					--first2; 
+					--first2;
 				}
 				if(*first2 < *first1) {
 					++first1;
 					++first2;
+				}
+				*/
+				first2 -= ratio;
+				while(*first2 < *first1) {
+					++first2;
+				}
+				if(*first2 > *first1) {
+					++first1;
 				}
 			} else {
 				++answer;
 				++first1;
 				++first2;
 			}
+		}
+		first2 -= ratio;
+		while(first2 < last2) {
+			if(*first2 == *first1) ++answer;
+			++first2;
 		}
 	}
 	else {
@@ -160,9 +197,9 @@ void find_common3() {
 int main()
 {
 
-FILE *fp =  fopen("sample5_answer.txt", "r");
-FILE *fp2 = fopen("sample5_n2.txt", "r");
-FILE *fp3 = fopen("sample5_n1.txt", "r");
+FILE *fp =  fopen("sample1_answer.txt", "r");
+FILE *fp2 = fopen("sample1_n2.txt", "r");
+FILE *fp3 = fopen("sample1_n1.txt", "r");
 //FILE *fp =  fopen("answer.txt", "r");
 //FILE *fp2 = fopen("input2.txt", "r");
 //FILE *fp3 = fopen("input1.txt", "r");

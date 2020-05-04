@@ -1,0 +1,44 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+answer	2016312029.c	/^int answer = 0; \/\/final common$/;"	v
+answer	2016312029.cpp	/^int answer = 0; \/\/final common$/;"	v
+answer	template.c	/^int answer = 0; \/\/final common$/;"	v
+binary_search	2016312029.c	/^int binary_search(int target, int *arr, int start, int end) {$/;"	f
+binary_search	template.c	/^int binary_search(int target, int *arr, int start, int end) {$/;"	f
+binary_search2	2016312029.c	/^int binary_search2(int target, int *arr, int start, int end) {$/;"	f
+find_common	2016312029.c	/^void find_common(){$/;"	f
+find_common	2016312029.cpp	/^void find_common(){$/;"	f
+find_common	template.c	/^void find_common(){$/;"	f
+find_common2	2016312029.c	/^void find_common2() {$/;"	f
+find_common2	template.c	/^void find_common2() {$/;"	f
+find_common3	2016312029.c	/^void find_common3() {$/;"	f
+input	2016312029.c	/^int input[3];$/;"	v
+input	2016312029.cpp	/^int input[3];$/;"	v
+input	template.c	/^int input[3];$/;"	v
+intersect	2016312029.c	/^void intersect(int *d, int* q, int mind, int maxd, int minq, int maxq) {$/;"	f
+intersect	template.c	/^void intersect(int *d, int* q, int mind, int maxd, int minq, int maxq) {$/;"	f
+main	2016312029.c	/^int main()$/;"	f
+main	2016312029.cpp	/^int main()$/;"	f
+main	template.c	/^int main()$/;"	f
+n1	2016312029.c	/^int n1[n1_max];$/;"	v
+n1	2016312029.cpp	/^int n1[n1_max];$/;"	v
+n1	template.c	/^int n1[n1_max];$/;"	v
+n1_max	2016312029.c	6;"	d	file:
+n1_max	2016312029.cpp	8;"	d	file:
+n1_max	template.c	5;"	d	file:
+n1_num	2016312029.c	/^int n1_num;$/;"	v
+n1_num	2016312029.cpp	/^int n1_num;$/;"	v
+n1_num	template.c	/^int n1_num;$/;"	v
+n2	2016312029.c	/^int n2[n2_max];$/;"	v
+n2	2016312029.cpp	/^int n2[n2_max];$/;"	v
+n2	template.c	/^int n2[n2_max];$/;"	v
+n2_max	2016312029.c	7;"	d	file:
+n2_max	2016312029.cpp	9;"	d	file:
+n2_max	template.c	6;"	d	file:
+n2_num	2016312029.c	/^int n2_num;$/;"	v
+n2_num	2016312029.cpp	/^int n2_num;$/;"	v
+n2_num	template.c	/^int n2_num;$/;"	v
